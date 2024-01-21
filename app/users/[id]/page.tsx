@@ -6,7 +6,7 @@ interface Props {
 
 // props passed bhere are destrcutured, it's originally = (props : Props) => {}
 const userDetailPage = ({ params: { id } }: Props) => {
-  return <div></div>;
+  return <div> Detail Page of user {id}</div>;
 };
 
 export default userDetailPage;
