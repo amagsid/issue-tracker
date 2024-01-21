@@ -4,7 +4,9 @@ import React from 'react';
 const AddToCart = () => {
   return (
     <div>
-      <button onClick={() => alert('added')}>Add to cart</button>
+      <button className='btn btn-primary' onClick={() => alert('added')}>
+        Add to cart
+      </button>
     </div>
   );
 };
