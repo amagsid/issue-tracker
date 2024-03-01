@@ -9,7 +9,12 @@ const ProductPage = ({
   params: { slug },
   searchParams: { sortOrder },
 }: Props) => {
-  return <div> ProductPage {slug}</div>;
+  return (
+    <div>
+      {' '}
+      ProductPage {slug} {sortOrder}
+    </div>
+  );
 };
 
 export default ProductPage;

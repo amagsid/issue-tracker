@@ -1,5 +1,6 @@
 import React from 'react';
 import UserTable from './UserTable';
+import Link from 'next/link';
 
 interface User {
   id: number;
@@ -8,17 +9,18 @@ interface User {
 }
 
 interface Props {
-  searchParams: { sortOrder: string };
+  searchParams: { sortBy: string; sortOrder: string };
 }
 
-const UsersPage = async ({ searchParams: { sortOrder } }: Props) => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users', {
-    next: { revalidate: 10 },
-  });
-
+const UsersPage = async ({ searchParams: { sortBy, sortOrder } }: Props) => {
   return (
     <>
-      <UserTable sortOrder={sortOrder} />
+      <h1> users</h1>
+      <Link href='/users/new' className='btn btn-primary'>
+        {' '}
+        New User
+      </Link>
+      <UserTable sortBy={sortBy} sortOrder={sortOrder} />
     </>
   );
 };

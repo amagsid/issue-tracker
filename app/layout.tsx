@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import NavBar from './Nav';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,7 +21,11 @@ export default function RootLayout({
         {' '}
         <script src='https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js'></script>
       </head>
-      <body className={inter.className}>{children}</body>
+
+      <body className={inter.className}>
+        <NavBar />
+        <main className='p-5'> {children} </main>
+      </body>
     </html>
   );
 }

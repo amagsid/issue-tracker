@@ -1,7 +1,11 @@
 import React from 'react';
 
+// interface Props {
+//   params: { id: number; photoId: number; photoName: string };
+// }
+
 interface Props {
-  params: { id: number; photoId: number; photoName: string };
+  params: { id: number; photoId: number };
 }
 
 const PhotoPage = ({ params: { id, photoId } }: Props) => {

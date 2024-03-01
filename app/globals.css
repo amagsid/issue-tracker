@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* todo */
+/* look uo what components and utilities do */
+
 :root {
   --foreground-rgb: 0, 0, 0;
 }
@@ -14,6 +17,12 @@
 
 body {
   /* color: rgb(var(--foreground-rgb)); */
-  padding: 1rem;
+  /* padding: 1rem; */
   background-color: --color-default;
+}
+
+@layer base {
+  h1 {
+    @apply font-extrabold text-2xl mb-3;
+  }
 }

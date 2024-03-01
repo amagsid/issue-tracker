@@ -9,10 +9,11 @@ interface User {
 }
 
 interface Props {
+  sortBy: string;
   sortOrder: string;
 }
 
-const UserTable = async ({ sortOrder }: Props) => {
+const UserTable = async ({ sortBy, sortOrder }: Props) => {
   const res = await fetch('https://jsonplaceholder.typicode.com/users', {
     next: { revalidate: 10 },
   });
@@ -20,24 +21,24 @@ const UserTable = async ({ sortOrder }: Props) => {
   const users: User[] = await res.json();
 
   const sortedUsersAsc = sort(users).asc(
-    sortOrder == 'email' ? (user) => user.name : (user) => user.email
+    sortBy == 'email' ? (user) => user.email : (user) => user.name
+  );
+  const sortedUsersDesc = sort(users).desc(
+    sortBy == 'email' ? (user) => user.email : (user) => user.name
   );
 
   return (
     <>
-      {' '}
-      <h1>sort order is {sortOrder}</h1>
-      <Link href='/users?sortBy=ascending'>
-        <h1> ascending</h1>
-      </Link>
+      {/* todo */}
+      {/* add descending order as well */}
       <table className='table table-bordered'>
         <thead>
           <tr>
             <th>
-              <Link href={'/users?sortOrder=name'}> Name </Link>
+              <Link href={'/users?sortBy=name'}> Name </Link>
             </th>
             <th>
-              <Link href={'/users?sortOrder=email'}> Email </Link>
+              <Link href={'/users?sortBy=email'}> Email </Link>
             </th>
           </tr>
         </thead>
