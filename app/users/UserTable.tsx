@@ -20,12 +20,12 @@ const UserTable = async ({ sortBy, sortOrder }: Props) => {
 
   const users: User[] = await res.json();
 
-  const sortedUsersAsc = sort(users).asc(
+  const sortedUsers = sort(users).asc(
     sortBy == 'email' ? (user) => user.email : (user) => user.name
   );
-  const sortedUsersDesc = sort(users).desc(
-    sortBy == 'email' ? (user) => user.email : (user) => user.name
-  );
+  // const sortedUsersDesc = sort(users).desc(
+  //   sortBy == 'email' ? (user) => user.email : (user) => user.name
+  // );
 
   return (
     <>
@@ -43,7 +43,7 @@ const UserTable = async ({ sortBy, sortOrder }: Props) => {
           </tr>
         </thead>
         <tbody>
-          {sortedUsersAsc.map(({ name, email, id }) => (
+          {sortedUsers.map(({ name, email, id }) => (
             <tr key={id}>
               <td> {name} </td>
               <td> {email} </td>
