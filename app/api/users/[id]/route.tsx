@@ -19,10 +19,9 @@ export function GET(request: NextRequest, { params: { id } }: Props) {
 export async function PUT(request: NextRequest, { params: { id } }: Props) {
   //validate the request body
   const body = await request.json();
-  //if invalid we return 400
-
   const validation = schema.safeParse(body);
   if (!validation.success)
+    //if invalid we return 400
     return NextResponse.json(validation.error.errors, { status: 400 });
   //if it doesn't exist we return 404
   if (id > 10)
@@ -30,7 +29,7 @@ export async function PUT(request: NextRequest, { params: { id } }: Props) {
   //fetch the user with the given id
   //update the user
   //return updated user
-  return NextResponse.json({ id: 1, name: body.name }, { status: 200 });
+  return NextResponse.json({ id: id, name: body.name }, { status: 200 });
 }
 
 export function DELETE(request: NextRequest, { params: { id } }: Props) {
